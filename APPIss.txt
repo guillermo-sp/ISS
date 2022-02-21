@@ -1,0 +1,11 @@
+# Crear la aplicación (indicar la ruta en donde hemos creado el servicio Web ASP.NET (ASMX) con Microsoft Visual Studio)
+New-WebApplication -Name "TestApp2" -Site "Default Web Site" -PhysicalPath "C:\Users\juan\source\repos\WebApplication3\WebApplication3" -ApplicationPool "DefaultAppPool"
+
+# Ver las aplicaciones creadas
+Get-WebApplication -Name "TestApp2" | select *
+
+# Invocar a un método creado
+$URI = "http://localhost/TestApp2/WebService1.asmx"
+$webservice = New-WebServiceProxy -Uri $URI
+$webservice.HelloWorld()
+
